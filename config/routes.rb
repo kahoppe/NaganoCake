@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'genres/index'
+  get 'genres/edit'
   devise_for :admins, path: 'admin', controllers: {
       sessions: 'admin/sessions',
       passwords: 'admin/passwords',
@@ -6,7 +8,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-
+    resources :genres
     resources :orders
     resources :customers
     resources :items, only: [:index, :show]
