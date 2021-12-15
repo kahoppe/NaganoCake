@@ -1,1 +1,44 @@
-<h1>admin itens index</h1>
+
+
+<div class="col-md-8 offset-md-1">
+      <h4>商品一覧</h4>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td>
+                <!--商品ID-->
+
+                <%= item.id %>
+              </td>
+              <td>
+                <!--商品名-->
+                <%= link_to item.name, admin_item_path(item.id) %>
+              </td>
+              <td>
+                <!--税抜価格-->
+                <%= item.price %>
+              </td>
+              <td>
+                <!--ジャンル-->
+
+                <%= item.genre.name %>
+              </td>
+              <td>
+                <!--ステータス-->
+                <%= item.is_active %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>

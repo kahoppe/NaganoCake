@@ -1,8 +1,9 @@
 <div class="container">
   <h4>管理者ログイン</h4>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @admin, url: new_admin_session_path, local: true do |f| %>
     <div class="mx-auto col-sm-10 col-lg-8 col-xl-6">
       <div class="field btn btn-block">
+
         <div class="row justify-content-between">
 
           <%= f.label :email, "メールアドレス" %>
@@ -20,6 +21,6 @@
         <%= f.submit "ログイン", class: "btn btn-primary btn-sm btn-block" %>
       </div>
     </div>
-    
+
   <% end %>
 </div>
