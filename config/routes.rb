@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'genres/index'
-  get 'genres/edit'
+  # get 'genres/index'
+  # get 'genres/edit'
   devise_for :admins, path: 'admin', controllers: {
       sessions: 'admin/sessions',
       passwords: 'admin/passwords',
@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :genres
     resources :orders
     resources :customers
-    resources :items, only: [:index, :show]
-    root to: 'homes#top'
+    resources :items
+
   end
 
   scope module: :public do
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     }
     # root to: 'homes#top'
     get "home/about" => "homes#about"
+    root to: 'homes#top'
 
     resources :orders
     resources :cart_items

@@ -1,0 +1,57 @@
+<div class="container">
+  <h4>商品編集</h4>
+
+  <%= form_with model: @item, url: admin_item_path(@item), local:true do |f| %>
+
+    <div class="row justify-content-between">
+      <div class="mx-auto col-sm-10 col-lg-8 col-xl-6">
+
+        <%#= form_with model: @item, local:true do |f| %>
+
+        <div class="fotm-group">
+          <%= f.label :image, "商品画像" %>
+          <%= f.attachment_field :image %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name, "商品名" %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :introduction, "商品説明" %>
+          <%= f.text_area :introduction %>
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox">
+            <%= f.label :genre_id, "ジャンル" %>
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :price, "税抜価格" %>
+          <%= f.text_field :price, class:"flex-row" %><span>円</span>
+        </div>
+
+        <div class="form-group">
+
+          <%= f.label :is_active, "販売ステータス" %>
+
+          <%= f.radio_button :is_active, "販売中" %>
+          <%= f.label :is_active, '販売中', value: "販売中" %>
+
+          <%= f.radio_button :is_active, "販売停止中" %>
+          <%= f.label :is_active, '販売停止中', value: "販売停止中" %>
+
+        </div>
+
+        <div class="form-group">
+          <%= f.submit '変更を保存', class: "btn btn-success" %>
+        </div>
+        <%# end %>
+
+      </div>
+    </div>
+  <% end %>
+</div>
